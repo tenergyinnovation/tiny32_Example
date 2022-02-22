@@ -1,6 +1,6 @@
 #include <tiny32.h>
 
-tiny32 mcu;
+tiny32 mcu; //define Opject
 
 void setup() {
   Serial.begin(115200);
@@ -8,13 +8,14 @@ void setup() {
 }
 
 void loop() {
-  static int _state = 0;
 
-  if(mcu.Sw1())
+  static int _state = 0;  //ตัวแปรเก็บค่ารอบการกดสวิตช์
+
+  if(mcu.Sw1()) 
   {
     mcu.buzzer_beep(1);
     _state++;
-    while(mcu.Sw1());
+    while(mcu.Sw1());  //หยุดรอการกดอีกครั้ง
     if(_state > 2 )
     _state = 1;
 
